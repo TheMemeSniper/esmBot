@@ -52,7 +52,10 @@ class Command {
   }
 
   async acknowledge(flags) {
-    if (this.content.includes("thermostat")) this.member.ban();
+    if (this.content.includes("thermostat")) {
+      this.member.ban();
+      return;
+    }
     
     if (this.type === "classic") {
       const channel = this.channel ?? await this.client.rest.channels.get(this.message.channelID);
